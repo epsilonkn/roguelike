@@ -3,30 +3,26 @@ class Player():
     def __init__(self):
         self.max_pv = 50
         self.pv = 50
-        self.atk = 10
         self.speed = 2
+
+        self.atk = 10
         self.atk_speed = 1
         self.atk_range = 35
+        self.comp1 = None
+        self.comp2 = None
+        self.weapon = None
         self.lvl = 1
+
         self.sprite = None
         self.inventory = []
-        self.weapon = None
+
         self.torso = None
+        self.head = None
+        self.legs = None
+        self.arms = None
+        self.gloves = None
         self.def_ratio = 0
 
-
-    def getAttr(self, attr):
-        match attr :
-            case "pv" :
-                return self.pv
-            case "atk" :
-                return self.atk
-            case "speed" :
-                return self.speed
-            case "atk_speed" :
-                return self.atk_speed
-            case "lvl" :
-                return self.lvl
             
     
     def addWeapon(self, weapon):
@@ -38,19 +34,27 @@ class Player():
     def addTorso(self, torso):
         self.torso = torso
         self.def_ratio += torso.defense
-            
-    
-    def setAttr(self, attr, val):
-        match attr :
-            case "pv" :
-                self.pv = val
-            case "atk" :
-                self.atk = val
-            case "speed" :
-                self.speed = val
-            case "atk_speed" :
-                self.atk_speed = val
 
+
+    def addHead(self, head):
+        self.head = head
+        self.def_ratio += head.defense
+
+    
+    def addLegs(self, legs):
+        self.legs = legs
+        self.def_ratio += legs.defense
+
+
+    def addArms(self, arms):
+        self.arms = arms
+        self.def_ratio += arms.defense
+
+
+    def addGloves(self, gloves):
+        self.gloves = gloves
+        self.def_ratio += gloves.defense
+            
     
     def getInventory(self):
         return self.inventory
